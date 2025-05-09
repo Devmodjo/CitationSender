@@ -6,7 +6,10 @@
 }
 :root {
   --background-color-dark: #0a0a0a;
+  --background-color-light: white;
   --background-container-dark: #0f0f0fee;
+  --background-container-light:whitesmoke;
+  --background-containerpost-dark:#111111ce;
   --text-color-light: #fff;
   --text-color-dark: #000;
 }
@@ -29,8 +32,8 @@
   src: url(./../Fonts/Storm-Gust.ttf);
 }
 
-title{
-  font-family: 'stormGust';
+title {
+  font-family: "stormGust";
 }
 
 body {
@@ -94,13 +97,95 @@ input[type="email"]:focus {
   border: none;
   border-radius: 6px;
   color: white;
-  font-family: 'Poppinf';
+  font-family: "Poppinf";
   margin: 1em;
   padding: 8px;
   background-color: blue !important;
   cursor: pointer;
 }
 
+/* entête de la preview de post */
+.headerPreview {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  z-index: 999;
+  box-shadow: 0px 8px 50px rgba(13, 39, 80, 0.1);
+  background-color: var(--background-color-light);
+}
+
+.headerPreview h2 {
+  font-family: "stormGust";
+}
+
+.headerPreview button {
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-family: "poppinf";
+  font-weight: bold;
+  padding: 8px;
+  background-color: blue !important;
+  cursor: pointer;
+}
+.somePosts {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(95px);
+}
+.postPreview{
+  width: 100% auto;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 1em;
+  padding: 20px;
+  box-shadow: 0px 28px 50px rgba(13, 39, 80, 0.1);
+}
+.postPreview header{
+  margin-bottom:1em;
+  width: 100%;
+  display: flex;
+}
+.postPreview header strong{
+  margin: 5px 4px 5px;
+}
+.postPreview .postContain{
+  text-align: justify;
+  margin-bottom: 12px;
+}
+.postPreview .postContain .contain{
+  text-align: justify;
+  padding: .5em;
+  margin-bottom: 12px;
+}
+.postPreview .iconPost{
+  display: flex;
+  padding: 5px;
+  font-size: 14px;
+  /* justify-content: space-evenly; */
+}
+.postPreview .iconPost .likeButton{
+  display: flex;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.postPreview .iconPost .likeButton .countLike{
+  display: flex;
+  margin-right: 5px;
+}
+.postPreview .iconPost .commentButton{
+  display: flex;
+  cursor: pointer;
+}
+.postPreview .iconPost .commentButton .countComments{
+  display: flex;
+  margin-right: 5px;
+}
 
 /* theme de couleur en fonction du systeme de l'appareil */
 @media (prefers-color-scheme: dark) {
@@ -113,7 +198,7 @@ input[type="email"]:focus {
   }
   .centered-form input[type="text"],
   input[type="password"],
-  input[type="email"]{
+  input[type="email"] {
     color: var(--text-color-light);
   }
   .centered-form button {
@@ -121,6 +206,12 @@ input[type="email"]:focus {
   }
   .centered-form a {
     color: green !important;
+  }
+  .headerPreview {
+    background: var(--background-container-dark);
+  }
+  .headerPreview button {
+    background-color: green !important;
   }
 }
 

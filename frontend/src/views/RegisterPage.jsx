@@ -99,7 +99,7 @@ export function Register() {
         <label htmlFor="ihaveaccount">
           vous avez deja un compte,{" "}
           
-          <Link to={"/"}> <b>se connecter</b> </Link>{" "}
+          <Link to={"/login"}> <b>se connecter</b> </Link>{" "}
           
         </label>{" "}
         <br />

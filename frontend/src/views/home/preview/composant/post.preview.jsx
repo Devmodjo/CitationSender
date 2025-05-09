@@ -1,32 +1,27 @@
 import { FaUserCircle, FaThumbsUp, FaComment} from "react-icons/fa";
 
-export function PostPreview({
-  username,
-  message,
-  author,
-  source,
-}) {
+export function PostPreview({username,message,author,source,}) {
   return (
-    <div className="commentPreview">
+    <div className="postPreview">
       <header>
-        {/* {profilePicture ? (
-          <img src={profilePicture} width={50} height={50} className="pp"></img>
-        ) : (
-          <FaUserCircle
-            style={{ color: "white", width: "50px", height: "50px" }}
-          />
-        )} */}
+        <FaUserCircle style={{ width: "30px", height: "30px" }} />
         <strong>{username}</strong>
       </header>
-      <main>
+      <main className="postContain">
         <div className="contain">{message}</div>
-        <div className="author">{author}</div>
-        <div className="source">{source}</div>
+        <div className="author"><i style={{color: 'gray'}}>{author}</i></div>
+        <div className="source"><i><strong>{source}</strong></i></div>
       </main>
       <footer>
         <div className="iconPost">
-            <div><FaThumbsUp /> . j'aime</div>
-            <div><FaComment /> . commentaire</div>
+            <div className="likeButton">
+              <div className="countLike">0</div> 
+              <FaThumbsUp />
+            </div>
+            <div className="commentButton">
+              <div className="countComments">0</div> 
+              <FaComment />
+            </div>
         </div>
       </footer>
     </div>

@@ -5,7 +5,7 @@ import { LoginPage } from "./LoginPage";
 export function IndexPage() {
   
   // simulation de session
-  const sessionid = 0;
+  const sessionid = 1;
 
   return (
     <>
