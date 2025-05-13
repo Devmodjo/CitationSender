@@ -29,6 +29,10 @@ app.use(
       httpOnly: true,
       maxAge: new Date().getTime() * 365 * 24 * 60 * 60, // dure 1 ans a partir de la date actuel
     },
+    store: new (require("connect-mongo"))({
+      url: process.env.MONGO_URI,
+      collectionName: "sessions",
+    }),
   })
 );
 
