@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { useEffect } from "react";
 import { NabarPreview } from "./composant/navbar.preview";
-import { PostPreview } from "./composant/post.preview";
+import { ErrorBoundary } from "../../error/ErrorBoundary";
 
 export function MainappPreview() {
   const [posts, setPosts] = useState([]);
@@ -14,7 +14,7 @@ export function MainappPreview() {
         }
       })
       .catch((err) => console.log(err.message));
-  });
+  }, []);
 
   return (
     <div className="mainappPreview">
@@ -22,19 +22,33 @@ export function MainappPreview() {
 
       <div className="somePosts">
         {/* contenir tous les post apres traitement dans le useEffect */}
-        {posts.map((post, index) => (
-          <PostPreview
-            key={index}
-            username={post.username}
-            message={post.message}
-            author={post.author}
-            source={post.source}
-          />
-        ))}
+        {
+          <ErrorBoundary fallback={<p>Impossible de charger les posts</p>}>
+            {asynchroniousPost(posts)}
+          </ErrorBoundary>
+        }
       </div>
     </div>
   );
 }
+
+const asynchroniousPost = function (posts) {
+  const PostLazy = lazy(() => import("./composant/post.preview"));
+
+  return (
+    <Suspense fallback={<div className="loader"></div>}>
+      {posts.map((data, key) => (
+        <PostLazy
+          key={key}
+          username={data.username}
+          message={data.message}
+          author={data.author}
+          source={data.source}
+        />
+      ))}
+    </Suspense>
+  );
+};
 
 const getPosts = async () => {
   try {

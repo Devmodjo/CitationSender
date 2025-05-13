@@ -1,6 +1,6 @@
 import { FaUserCircle, FaThumbsUp, FaComment} from "react-icons/fa";
 
-export function PostPreview({username,message,author,source,}) {
+export default function PostPreview({username,message,author,source,}) {
   return (
     <div className="postPreview">
       <header>
