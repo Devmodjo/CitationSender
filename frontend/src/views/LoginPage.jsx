@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export function LoginPage() {
+export function LoginPage({ styles, id }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
@@ -11,7 +11,7 @@ export function LoginPage() {
   }
 
   return (
-    <div className="centered-form shadow contain-theme">
+    <div className="centered-form shadow contain-theme" style={styles} id={id}>
       <h2>Connexion</h2>
       <form method="post">
         <label htmlFor="username">Username</label>

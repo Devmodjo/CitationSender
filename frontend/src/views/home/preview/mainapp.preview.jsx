@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import { useEffect } from "react";
 import { NabarPreview } from "./composant/navbar.preview";
 import { ErrorBoundary } from "../../error/ErrorBoundary";
+import { AppearOnScroll } from '../../../utils/ScrollEffect'
 
 export function MainappPreview() {
   const [posts, setPosts] = useState([]);
@@ -38,13 +39,15 @@ const asynchroniousPost = function (posts) {
   return (
     <Suspense fallback={<div className="loader"></div>}>
       {posts.map((data, key) => (
-        <PostLazy
-          key={key}
-          username={data.username}
-          message={data.message}
-          author={data.author}
-          source={data.source}
-        />
+        <AppearOnScroll threshold={0.4}>
+          <PostLazy
+            key={key}
+            username={data.username}
+            message={data.message}
+            author={data.author}
+            source={data.source}
+          />
+        </AppearOnScroll>
       ))}
     </Suspense>
   );
