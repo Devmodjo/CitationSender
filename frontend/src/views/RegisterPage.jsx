@@ -44,7 +44,7 @@ export function Register() {
       });
 
       if (req.status === 200) {
-        navigate("/"); // se rediriger vers la page d'acceuil
+        navigate("/login"); // se rediriger vers la page d'acceuil
         alert("nouvel utilisateur enregistrer");
         return await req.json();
       }
